@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfessorPhD2025v1 - Academic Intelligence Assistant</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="logo">
+                <h2>ProfessorPhD</h2>
+                <div class="version">v2025.1</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="chat">
+                    <span class="icon">💬</span> Chat
+                </a>
+                <a href="#" class="nav-item" data-section="upload">
+                    <span class="icon">📄</span> Upload Documents
+                </a>
+                <a href="#" class="nav-item" data-section="vector-store">
+                    <span class="icon">🗃️</span> Vector Stores
+                </a>
+                <a href="#" class="nav-item" data-section="visualization">
+                    <span class="icon">📊</span> Visualization
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="logout-btn">
+                    <span class="icon">🚪</span> Logout
+                </button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <header class="main-header">
+                <h1>Academic Intelligence Assistant</h1>
+            </header>
+            
+            <div class="content-area">
+                <!-- Login Section -->
+                <div id="login-section" class="section">
+                    <div class="login-container">
+                        <h2>ProfessorPhD2025v1</h2>
+                        <h3>Academic Intelligence Assistant</h3>
+                        
+                        <div class="login-form">
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" placeholder="Enter username">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" placeholder="Enter password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="api-key">OpenAI API Key (Optional):</label>
+                                <input type="text" id="api-key" placeholder="sk-...">
+                            </div>
+                            
+                            <button id="login-btn" class="login-btn">Login</button>
+                            
+                            <div class="login-info">
+                                Default credentials: disraeli / torrent77
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chat Section -->
+                <div id="chat-section" class="section hidden">
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message system">
+                                <div class="message-content">
+                                    Welcome to ProfessorPhD2025v1, your Academic Intelligence Assistant. How can I help with your research today?
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <input type="text" id="chat-input" placeholder="Ask a research question...">
+                            <button id="send-btn">
+                                <span class="icon">📤</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upload Section -->
+                <div id="upload-section" class="section hidden">
+                    <div class="upload-container">
+                        <h2>Upload Academic Documents</h2>
+                        <p>Upload PDFs, EPUBs, Word documents, or text files to enhance your research assistant's knowledge.</p>
+                        
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-icon">📁</div>
+                            <p>Drag and drop files here or click to browse</p>
+                            <input type="file" id="file-input" multiple accept=".pdf,.epub,.docx,.txt">
+                        </div>
+                        
+                        <div class="uploaded-files" id="uploaded-files">
+                            <h3>Uploaded Files</h3>
+                            <div class="file-list" id="file-list">
+                                <!-- Files will be listed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vector Store Section -->
+                <div id="vector-store-section" class="section hidden">
+                    <div class="vector-store-container">
+                        <h2>Vector Stores Management</h2>
+                        <p>Manage your document embeddings and vector stores for retrieval-augmented generation.</p>
+                        
+                        <div class="vector-stores-list">
+                            <div class="vector-store-item">
+                                <div class="vector-store-info">
+                                    <h3>Research Papers</h3>
+                                    <p>25 documents, 1,342 chunks</p>
+                                </div>
+                                <div class="vector-store-actions">
+                                    <button class="btn-view">View</button>
+                                    <button class="btn-update">Update</button>
+                                    <button class="btn-delete">Delete</button>
+                                </div>
+                            </div>
+                            
+                            <div class="vector-store-item">
+                                <div class="vector-store-info">
+                                    <h3>Academic Books</h3>
+                                    <p>8 documents, 756 chunks</p>
+                                </div>
+                                <div class="vector-store-actions">
+                                    <button class="btn-view">View</button>
+                                    <button class="btn-update">Update</button>
+                                    <button class="btn-delete">Delete</button>
+                                </div>
+                            </div>
+                            
+                            <div class="vector-store-item">
+                                <div class="vector-store-info">
+                                    <h3>Lecture Notes</h3>
+                                    <p>12 documents, 245 chunks</p>
+                                </div>
+                                <div class="vector-store-actions">
+                                    <button class="btn-view">View</button>
+                                    <button class="btn-update">Update</button>
+                                    <button class="btn-delete">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-create-store">Create New Vector Store</button>
+                    </div>
+                </div>
+                
+                <!-- Visualization Section -->
+                <div id="visualization-section" class="section hidden">
+                    <div class="visualization-container">
+                        <h2>Research Insights & Visualization</h2>
+                        <p>Generate visual insights from your research data and documents.</p>
+                        
+                        <div class="visualization-options">
+                            <div class="visualization-option">
+                                <h3>Topic Clustering</h3>
+                                <p>Identify key topics and clusters in your research documents.</p>
+                                <button class="btn-generate">Generate</button>
+                            </div>
+                            
+                            <div class="visualization-option">
+                                <h3>Citation Network</h3>
+                                <p>Visualize citation relationships between papers.</p>
+                                <button class="btn-generate">Generate</button>
+                            </div>
+                            
+                            <div class="visualization-option">
+                                <h3>Research Trends</h3>
+                                <p>Analyze trends and patterns in your research field over time.</p>
+                                <button class="btn-generate">Generate</button>
+                            </div>
+                            
+                            <div class="visualization-option">
+                                <h3>Concept Map</h3>
+                                <p>Create concept maps to visualize relationships between ideas.</p>
+                                <button class="btn-generate">Generate</button>
+                            </div>
+                        </div>
+                        
+                        <div class="visualization-preview">
+                            <h3>Preview</h3>
+                            <div class="preview-area">
+                                <p>Select a visualization type to generate a preview.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings Section -->
+                <div id="settings-section" class="section hidden">
+                    <div class="settings-container">
+                        <h2>Settings & Configuration</h2>
+                        
+                        <div class="settings-group">
+                            <h3>Model Settings</h3>
+                            
+                            <div class="setting-item">
+                                <label for="model-select">Model:</label>
+                                <select id="model-select">
+                                    <option value="gpt-4.5-preview">GPT-4.5-preview</option>
+                                    <option value="gpt-4-turbo">GPT-4-turbo</option>
+                                    <option value="gpt-4">GPT-4</option>
+                                    <option value="gpt-3.5-turbo">GPT-3.5-turbo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="temperature">Temperature:</label>
+                                <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                                <span id="temperature-value">0.7</span>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="top-p">Top P:</label>
+                                <input type="range" id="top-p" min="0" max="1" step="0.1" value="0.9">
+                                <span id="top-p-value">0.9</span>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="max-tokens">Max Tokens:</label>
+                                <input type="number" id="max-tokens" min="100" max="8000" value="4000">
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h3>System Message</h3>
+                            
+                            <div class="setting-item">
+                                <label for="system-message-preset">Preset:</label>
+                                <select id="system-message-preset">
+                                    <option value="academic-researcher">Academic Researcher</option>
+                                    <option value="literature-review">Literature Review</option>
+                                    <option value="data-analysis">Data Analysis</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="system-message">Custom System Message:</label>
+                                <textarea id="system-message" rows="5" placeholder="Enter custom system message..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h3>RAG Settings</h3>
+                            
+                            <div class="setting-item">
+                                <label for="chunk-size">Chunk Size:</label>
+                                <input type="number" id="chunk-size" min="100" max="2000" value="500">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="chunk-overlap">Chunk Overlap:</label>
+                                <input type="number" id="chunk-overlap" min="0" max="500" value="50">
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label for="retrieval-count">Retrieval Count:</label>
+                                <input type="number" id="retrieval-count" min="1" max="20" value="5">
+                            </div>
+                        </div>
+                        
+                        <button id="save-settings" class="btn-save-settings">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
